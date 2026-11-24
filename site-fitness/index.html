@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HealthMeta · Sua meta, seu centro, sua força</title>
+    <meta
+      name="description"
+      content="Calcule seu IMC e veja orientações gerais de alimentação, atividade física e treinos."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#inicio" class="brand"
+          ><img src="assets/logo.png" alt="" width="44" height="44" /><span
+            >HealthMeta</span
+          ></a
+        >
+        <nav class="menu" aria-label="Principal">
+          <a href="#inicio">Início</a>
+          <a href="#calculadora">Calculadora</a>
+          <a href="#boas-praticas">Boas práticas</a>
+          <a href="#treinos">Treinos</a>
+          <a href="#historico" data-auth hidden>Histórico</a>
+        </nav>
+        <div class="auth">
+          <span id="userLabel" class="user-label" hidden></span>
+          <a href="#entrar" id="authLink" class="btn btn-outline">Entrar</a>
+          <button id="logoutBtn" class="btn btn-outline" type="button" hidden>
+            Sair
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- INÍCIO -->
+      <section id="inicio" class="view">
+        <div class="container hero">
+          <div class="hero-texto">
+            <span class="pill">Saúde no seu ritmo</span>
+            <h1>Entenda seu corpo e cuide dele todos os dias</h1>
+            <p class="slogan">Sua meta, seu centro, sua força.</p>
+            <p class="lead">
+              Calcule seu IMC e veja orientações gerais de alimentação,
+              atividade física, hidratação e treinos para fazer em casa ou na
+              academia.
+            </p>
+            <div class="acoes">
+              <a href="#calculadora" class="btn btn-primary"
+                >Calcular meu IMC</a
+              >
+              <a href="#boas-praticas" class="btn btn-outline"
+                >Ver boas práticas</a
+              >
+            </div>
+          </div>
+          <aside id="ultimo-imc" class="card ultimo-imc" hidden></aside>
+        </div>
+        <div class="faixa-quote">
+          <div class="container">
+            <blockquote>
+              “Pequenas escolhas repetidas todos os dias mudam a sua história.”
+            </blockquote>
+            <p>Constância vale mais do que perfeição.</p>
+          </div>
+        </div>
+        <div class="container">
+          <h2 class="secao-titulo">Boas práticas para o dia a dia</h2>
+          <p class="muted">
+            Pequenos hábitos, aplicados com regularidade, fazem diferença no seu
+            bem-estar.
+          </p>
+          <div class="grid-5">
+            <article class="card dica">
+              <h3>Alimentação</h3>
+              <p>Monte refeições com variedade de alimentos naturais.</p>
+            </article>
+            <article class="card dica">
+              <h3>Atividade física</h3>
+              <p>
+                Movimente-se por pelo menos 150 minutos por semana, em ritmo
+                moderado.
+              </p>
+            </article>
+            <article class="card dica">
+              <h3>Hidratação</h3>
+              <p>Beba água ao longo do dia, mesmo quando não sentir sede.</p>
+            </article>
+            <article class="card dica">
+              <h3>Treinos</h3>
+              <p>
+                Escolha treinos em casa ou na academia, o que combinar com a sua
+                rotina.
+              </p>
+            </article>
+            <article class="card dica">
+              <h3>Descanso</h3>
+              <p>Durma bem e reserve momentos para relaxar e desacelerar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALCULADORA -->
+      <section id="calculadora" class="view">
+        <div class="container">
+          <p class="migalhas">Início / Calculadora de IMC</p>
+          <h1 class="titulo-pagina">Calculadora de IMC</h1>
+          <p class="muted">
+            Informe peso e altura para ver seu índice e a faixa de referência.
+          </p>
+
+          <div class="calc-grid">
+            <form id="form-calc" class="card form-calc" novalidate>
+              <label
+                >Peso (kg)
+                <input
+                  id="peso"
+                  name="peso"
+                  type="text"
+                  inputmode="decimal"
+                  placeholder="Ex.: 70"
+                  required
+                />
+              </label>
+              <label
+                >Altura (cm)
+                <input
+                  id="altura"
+                  name="altura"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="Ex.: 170"
+                  required
+                />
+              </label>
+              <label
+                >Idade (opcional)
+                <input
+                  id="idade"
+                  name="idade"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="Ex.: 35"
+                />
+              </label>
+              <p id="erro-calc" class="msg erro" role="alert" hidden></p>
+              <button class="btn btn-primary btn-bloco" type="submit">
+                Calcular IMC
+              </button>
+              <p class="muted pequeno">
+                Use valores atuais para um resultado mais preciso.
+              </p>
+            </form>
+
+            <div class="resultado-col">
+              <div id="resultado" hidden></div>
+              <div id="resultado-vazio" class="card vazio">
+                <p>
+                  Seu resultado aparece aqui, com o que fazer, a alimentação, os
+                  treinos e a orientação para a sua faixa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="ganhar-full" class="banda-full" hidden></div>
+          <div id="faixa-full" class="faixa-full" hidden></div>
+        </div>
+      </section>
+
+      <!-- BOAS PRÁTICAS -->
+      <section id="boas-praticas" class="view">
+        <div class="container">
+          <h1 class="titulo-pagina">
+            Boas práticas para uma vida mais saudável
+          </h1>
+          <p class="muted">
+            Conteúdos curtos, com orientações gerais para o dia a dia.
+          </p>
+          <div id="lista-topicos" class="grid-3"></div>
+          <h2 class="secao-titulo">Busque o seu melhor hoje</h2>
+          <div id="lista-frases" class="grid-3 frases"></div>
+        </div>
+      </section>
+
+      <!-- TREINOS -->
+      <section id="treinos" class="view">
+        <div class="container">
+          <h1 class="titulo-pagina">Siga seu melhor ambiente de treino.</h1>
+          <p class="muted">
+            Escolha o ambiente que combina com a sua rotina. Os dois funcionam
+            bem.
+          </p>
+          <div id="treinos-estatico">
+            <div class="grid-2">
+              <article class="card treino">
+                <span class="tag">Sem equipamento</span>
+                <h2>Em casa</h2>
+                <p>
+                  Treinos com o próprio peso, em qualquer espaço. Ótimos para
+                  começar e manter a constância.
+                </p>
+                <ul class="lista-exercicios" id="lista-casa">
+                  <li>
+                    <strong>Agachamento</strong><span>Pernas e glúteos</span>
+                  </li>
+                  <li>
+                    <strong>Flexão de braço</strong
+                    ><span>Peito, ombros e braços</span>
+                  </li>
+                  <li><strong>Prancha</strong><span>Core e postura</span></li>
+                  <li>
+                    <strong>Afundo</strong><span>Pernas e equilíbrio</span>
+                  </li>
+                  <li>
+                    <strong>Caminhada ou corrida leve</strong
+                    ><span>Condicionamento</span>
+                  </li>
+                </ul>
+              </article>
+              <article class="card treino treino-escuro">
+                <span class="tag">Com equipamentos</span>
+                <h2>Na academia</h2>
+                <p>
+                  Máquinas e pesos livres permitem progredir com controle. Peça
+                  orientação para ajustar as cargas.
+                </p>
+                <ul class="lista-exercicios" id="lista-academia">
+                  <li><strong>Leg press</strong><span>Pernas</span></li>
+                  <li><strong>Supino na máquina</strong><span>Peito</span></li>
+                  <li><strong>Puxada na polia</strong><span>Costas</span></li>
+                  <li><strong>Remada</strong><span>Costas e postura</span></li>
+                  <li>
+                    <strong>Esteira ou bicicleta</strong
+                    ><span>Condicionamento</span>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+          <h2 class="secao-titulo">Como começar</h2>
+          <div class="grid-3">
+            <article class="card dica">
+              <h3>1. Escolha o ambiente</h3>
+              <p>
+                Pense na rotina, no tempo disponível e no que você gosta de
+                fazer.
+              </p>
+            </article>
+            <article class="card dica">
+              <h3>2. Comece devagar</h3>
+              <p>
+                Priorize a execução correta e aumente a intensidade aos poucos.
+              </p>
+            </article>
+            <article class="card dica">
+              <h3>3. Mantenha a constância</h3>
+              <p>
+                Dias fixos na semana ajudam a criar o hábito e a sentir a
+                evolução.
+              </p>
+            </article>
+          </div>
+          <p class="aviso">
+            Antes de começar, consulte um médico, principalmente se tiver alguma
+            condição de saúde.
+          </p>
+        </div>
+      </section>
+
+      <!-- ENTRAR / CADASTRAR -->
+      <section id="entrar" class="view">
+        <div class="container estreito">
+          <div class="card auth-card">
+            <div class="tabs" role="tablist">
+              <button
+                class="tab ativo"
+                data-aba="entrar"
+                type="button"
+                role="tab"
+              >
+                Entrar
+              </button>
+              <button class="tab" data-aba="cadastrar" type="button" role="tab">
+                Criar conta
+              </button>
+            </div>
+            <p id="aviso-entrar" class="msg aviso-login" hidden></p>
+            <p id="msg-auth" class="msg" hidden></p>
+
+            <form id="form-entrar" novalidate>
+              <h1 class="titulo-auth">Bem-vindo de volta</h1>
+              <label
+                >E-mail
+                <input
+                  id="login-email"
+                  type="email"
+                  autocomplete="email"
+                  required
+              /></label>
+              <label
+                >Senha
+                <input
+                  id="login-senha"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+              /></label>
+              <button class="btn btn-primary btn-bloco" type="submit">
+                Entrar
+              </button>
+            </form>
+
+            <form id="form-cadastrar" novalidate hidden>
+              <h1 class="titulo-auth">Crie sua conta</h1>
+              <label
+                >Nome
+                <input id="cad-nome" type="text" autocomplete="name" required
+              /></label>
+              <label
+                >E-mail
+                <input
+                  id="cad-email"
+                  type="email"
+                  autocomplete="email"
+                  required
+              /></label>
+              <label
+                >Senha (mín. 6 caracteres)
+                <input
+                  id="cad-senha"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="6"
+                  required
+              /></label>
+              <button class="btn btn-primary btn-bloco" type="submit">
+                Criar conta
+              </button>
+            </form>
+
+            <p class="muted pequeno">
+              Ao continuar, você concorda com os termos de uso e a política de
+              privacidade.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HISTÓRICO (só logado) -->
+      <section id="historico" class="view">
+        <div class="container">
+          <h1 class="titulo-pagina">Meu histórico</h1>
+          <p class="muted">Seus cálculos de IMC salvos neste navegador.</p>
+          <div class="card" id="lista-historico"></div>
+          <button id="limpar-historico" class="btn btn-outline" type="button">
+            Apagar histórico
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container rodape">
+        <div>
+          <div class="brand brand-light">
+            <img src="assets/logo.png" alt="" width="40" height="40" /><span
+              >HealthMeta</span
+            >
+          </div>
+          <p class="slogan">Sua meta, seu centro, sua força.</p>
+        </div>
+        <div>
+          <h4>Conteúdo</h4>
+          <a href="#boas-praticas">Alimentação</a>
+          <a href="#boas-praticas">Atividade física</a>
+          <a href="#treinos">Treinos</a>
+          <a href="#boas-praticas">Hidratação</a>
+        </div>
+        <div>
+          <h4>Ferramentas</h4>
+          <a href="#calculadora">Calculadora de IMC</a>
+          <a href="#inicio">Início</a>
+        </div>
+      </div>
+      <div class="container">
+        <p class="aviso-rodape">
+          Conteúdo informativo. Não substitui a orientação de médicos,
+          nutricionistas ou profissionais de educação física.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
