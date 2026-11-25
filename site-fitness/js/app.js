@@ -206,6 +206,10 @@
     const r = { peso, altura, imc, chave };
 
     renderResultado(r);
+
+    if (window.matchMedia("(max-width: 860px)").matches) {
+      $("#resultado").scrollIntoView({ behavior: "smooth", block: "start" })
+    }
   }
 
   // ---------- início: último IMC salvo (só logado) ----------
