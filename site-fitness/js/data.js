@@ -43,12 +43,30 @@ const FAIXAS = {
 };
 
 const TOPICOS = [
-  ["Alimentação equilibrada", "Como montar refeições variadas e reduzir ultraprocessados."],
-  ["Atividade física", "Como encaixar o movimento na rotina, mesmo com pouco tempo."],
-  ["Treinos em casa", "Exercícios com o próprio peso para começar sem equipamentos."],
-  ["Treinos na academia", "Como organizar a rotina e pedir orientação no início."],
-  ["Hidratação", "Sinais de sede, dicas para beber água e formas de variar."],
-  ["Descanso e sono", "Por que dormir bem influencia energia, humor e recuperação."]
+  ["Alimentação equilibrada", "Como montar refeições variadas e reduzir ultraprocessados.", [
+    "Uma alimentação equilibrada combina grupos diferentes de alimentos em cada refeição: grãos integrais, legumes, verduras, frutas, feijão e uma fonte de proteína. Essa variedade ajuda o corpo a receber vitaminas, minerais e energia de forma constante.",
+    "Ultraprocessados, como biscoitos recheados, refrigerantes e embutidos, costumam ter muito açúcar, sal e gordura e pouca fibra. Não é preciso eliminá-los, mas reduzir a frequência já faz diferença. Prefira preparar a comida em casa sempre que possível e observe como você se sente depois das refeições."
+  ]],
+  ["Atividade física", "Como encaixar o movimento na rotina, mesmo com pouco tempo.", [
+    "A atividade física não precisa começar com treinos longos. Caminhar até o trabalho, subir escadas, fazer pausas para se mover e dançar em casa já contam como movimento e ajudam a melhorar a disposição.",
+    "A recomendação geral para adultos é de cerca de 150 minutos de atividade moderada por semana, distribuídos em vários dias, além de exercícios de força pelo menos duas vezes por semana. Comece com o que cabe na sua rotina e aumente aos poucos."
+  ]],
+  ["Treinos em casa", "Exercícios com o próprio peso para começar sem equipamentos.", [
+    "Treinos com o próprio peso são uma boa forma de começar, porque não exigem equipamentos nem academia. Agachamento, flexão de braço, prancha e afundo trabalham pernas, peito, braços e core.",
+    "Para progredir, aumente as repetições ou o tempo de execução, diminua o descanso entre as séries ou escolha variações mais difíceis. Faça o movimento com calma e controle, e pare se sentir dor. Se tiver alguma condição de saúde, converse com um médico antes de começar."
+  ]],
+  ["Treinos na academia", "Como organizar a rotina e pedir orientação no início.", [
+    "Na academia, a principal dúvida costuma ser por onde começar. Uma boa ideia é pedir uma avaliação com um educador físico, que pode indicar máquinas, cargas iniciais e a frequência ideal para o seu objetivo.",
+    "Organize a rotina em dias fixos, com treinos para os principais grupos musculares, e anote as cargas usadas. Assim fica fácil ver a evolução e ajustar o treino com segurança ao longo das semanas."
+  ]],
+  ["Hidratação", "Sinais de sede, dicas para beber água e formas de variar.", [
+    "A sede é um sinal de que o corpo precisa de água, mas ela aparece quando a hidratação já está baixa. Urina clara e de cor amarelo-claro costuma indicar boa hidratação. Beber água ao longo do dia é mais eficiente do que beber muito de uma vez.",
+    "Se a água não agrada, experimente adicionar rodelas de limão, pepino ou hortelã, ou prefira água com gás. Frutas e verduras também ajudam, porque têm bastante água na composição. Em dias de calor ou de treino, aumente a ingestão."
+  ]],
+  ["Descanso e sono", "Por que dormir bem influencia energia, humor e recuperação.", [
+    "Durante o sono, o corpo recupera músculos, consolida a memória e regula hormônios ligados à fome e ao humor. Dormir mal pode aumentar o cansaço, a irritabilidade e a vontade de comer alimentos calóricos.",
+    "Para melhorar o sono, mantenha horários regulares para dormir e acordar, reduza telas antes de deitar e evite cafeína no fim da tarde. Se o problema persistir por semanas, procure um médico."
+  ]]
 ];
 
 const FRASES = [

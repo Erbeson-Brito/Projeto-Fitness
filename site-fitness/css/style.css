@@ -209,3 +209,18 @@ img { max-width: 100%; height: auto; }
 
 .treino-pessoal { max-width: 760px; margin-top: 1rem; }
 .treino-pessoal h2 { font-size: 1.5rem; margin-top: 12px; }
+
+.link-topico { background: none; border: 0; padding: 0; margin-top: 8px; color: var(--blue-2); font: inherit; font-weight: 600; cursor: pointer; }
+
+.link-topico { display: inline-block; text-decoration: none; }
+.topico-img { width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; }
+.voltar { display: inline-block; margin-top: 16px; font-weight: 600; color: var(--blue-2); text-decoration: none; }
+.tema-capa img { display: block; width: 100%; max-width: 640px; height: auto; border-radius: var(--radius); margin: 16px 0 24px; }
+.tema-texto p { font-size: 1.05rem; max-width: 70ch; color: var(--dark); }
+
+
+/* página do tema: mesmo layout da faixa de resultado do IMC */
+#tema .faixa-lateral img { display: block; width: 100%; height: auto; border-radius: 12px; margin-bottom: 16px; }
+#tema .faixa-colunas { grid-template-columns: minmax(0, 1fr); }
+#tema .faixa-colunas p { color: var(--dark); max-width: none; }
+#tema .faixa-colunas .aviso { margin-top: 8px; }

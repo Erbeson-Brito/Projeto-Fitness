@@ -64,17 +64,24 @@
   }
 
   // ---------- rotas ----------
-  const VIEWS = ["inicio", "calculadora", "boas-praticas", "treinos", "entrar", "historico"];
+  const VIEWS = ["inicio", "calculadora", "boas-praticas", "tema", "treinos", "entrar", "historico"];
+  const IMAGENS_TEMA = ["alimentacao", "atividade", "treinos-casa", "academia", "hidratacao", "descanso"];
   const PROTEGIDAS = ["historico"];
 
   function mostrar(rota) {
+    const [base, sub] = String(rota).split("/");
+    if (base === "tema") {
+      if (TOPICOS[Number(sub)]) { renderTema(Number(sub)); rota = "tema"; }
+      else rota = "boas-praticas";
+    }
     if (!VIEWS.includes(rota)) rota = "inicio";
     if (PROTEGIDAS.includes(rota) && !usuarioAtual()) {
       mostrarAviso("Entre na sua conta para ver o histórico.");
       rota = "entrar";
     }
     $$(".view").forEach((v) => v.classList.toggle("active", v.id === rota));
-    $$(".menu a").forEach((a) => a.classList.toggle("ativo", a.getAttribute("href") === "#" + rota));
+    const menuAtivo = rota === "tema" ? "boas-praticas" : rota;
+    $$(".menu a").forEach((a) => a.classList.toggle("ativo", a.getAttribute("href") === "#" + menuAtivo));
     if (rota === "historico") renderHistorico();
     if (rota === "treinos") renderTreinos();
     if (rota === "inicio") renderUltimoIMC();
@@ -307,11 +314,37 @@
     mostrar("inicio");
   }
 
+  // ---------- página de cada boa prática ----------
+  function renderTema(i) {
+    const box = $("#tema-conteudo");
+    const [t, d, paragrafos] = TOPICOS[i];
+    const cor = ["acc", "blue", "blue2", "dark", "blue", "blue2"][i];
+    box.replaceChildren(
+      el("a", { href: "#boas-praticas", class: "voltar" }, ["← Voltar para boas práticas"]),
+      el("section", { class: "faixa-full" }, [
+        el("section", { class: "faixa card" }, [
+          el("div", { class: "faixa-lateral faixa-" + cor }, [
+            el("img", { src: "assets/topicos/" + IMAGENS_TEMA[i] + ".svg", alt: "", width: "400", height: "240" }),
+            el("h2", null, [t]),
+            el("p", null, [d])
+          ]),
+          el("div", { class: "faixa-colunas" }, [
+            el("div", null, paragrafos.map((p) => el("p", null, [p]))),
+            el("p", { class: "aviso" }, ["Estas são orientações gerais. Para uma rotina individual, procure um profissional de saúde."])
+          ])
+        ])
+      ])
+    );
+  }
+
   // ---------- conteúdo estático ----------
   function montarConteudoEstatico() {
     const topicos = $("#lista-topicos");
-    TOPICOS.forEach(([t, d]) => topicos.append(el("article", { class: "card topico" }, [
-      el("h3", null, [t]), el("p", null, [d]), el("a", { href: "#calculadora" }, ["Calcular meu IMC →"])
+    TOPICOS.forEach(([t, d], i) => topicos.append(el("article", { class: "card topico" }, [
+      el("img", { class: "topico-img", src: "assets/topicos/" + IMAGENS_TEMA[i] + ".svg", alt: "", width: "400", height: "240" }),
+      el("h3", null, [t]),
+      el("p", null, [d]),
+      el("a", { href: "#tema/" + i, class: "link-topico" }, ["Saiba mais →"])
     ])));
     const frases = $("#lista-frases");
     FRASES.forEach((f) => frases.append(el("blockquote", { class: "frase" }, [f])));
