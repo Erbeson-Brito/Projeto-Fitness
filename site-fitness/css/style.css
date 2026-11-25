@@ -198,14 +198,13 @@ img { display: block; }
 .banda-conteudo h2 { color: var(--dark); }
 .banda-conteudo .objetivo { color: var(--blue-2); }
 
-/* ---------- correção de rolagem lateral: nada passa da largura da tela ---------- */
-.calc-grid > *, .faixa > *, .faixa-colunas > *, .resultado-col > *, .grid-2 > *, .grid-3 > *, .grid-5 > *, .hero > *, .rodape > * { min-width: 0; }
 #lista-historico { overflow-x: auto; }
 img { max-width: 100%; height: auto; }
 @media (max-width: 860px) {
   .calc-grid { grid-template-columns: minmax(0, 1fr); }
   .faixa-colunas { grid-template-columns: minmax(0, 1fr); }
   .faixa { grid-template-columns: minmax(0, 1fr); }
+  .faixa-full .faixa {grid-template-columns: minmax(0, 1fr);}
 }
 
 .treino-pessoal { max-width: 760px; margin-top: 1rem; }

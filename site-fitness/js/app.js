@@ -21,12 +21,12 @@
 
   // ---------- sessão ----------
   function usuarioAtual() {
-    const email = store.get("metacore_session", null);
+    const email = store.get("healthmeta_session", null);
     if (!email) return null;
-    const users = store.get("metacore_users", {});
+    const users = store.get("healthmeta_users", {});
     return users[email] ? { email, nome: users[email].nome } : null;
   }
-  function historicoKey(email) { return "metacore_hist_" + email; }
+  function historicoKey(email) { return "healthmeta_hist_" + email; }
   function getHistorico() {
     const u = usuarioAtual();
     return u ? store.get(historicoKey(u.email), []) : [];
@@ -278,11 +278,11 @@
     if (!nome || !email.includes("@") || senha.length < 6) {
       msgAuth("Preencha nome, e-mail válido e uma senha com pelo menos 6 caracteres.", false); return;
     }
-    const users = store.get("metacore_users", {});
+    const users = store.get("healthmeta_users", {});
     if (users[email]) { msgAuth("Já existe uma conta com este e-mail.", false); return; }
     users[email] = { nome, senha };
-    store.set("metacore_users", users);
-    store.set("metacore_session", email);
+    store.set("healthmeta_users", users);
+    store.set("healthmeta_session", email);
     ev.target.reset();
     atualizarCabecalho();
     mostrar("calculadora");
@@ -291,15 +291,15 @@
     ev.preventDefault();
     const email = $("#login-email").value.trim().toLowerCase();
     const senha = $("#login-senha").value;
-    const users = store.get("metacore_users", {});
+    const users = store.get("healthmeta_users", {});
     if (!users[email] || users[email].senha !== senha) { msgAuth("E-mail ou senha incorretos.", false); return; }
-    store.set("metacore_session", email);
+    store.set("healthmeta_session", email);
     ev.target.reset();
     atualizarCabecalho();
     mostrar("inicio");
   }
   function onSair() {
-    store.remove("metacore_session");
+    store.remove("healthmeta_session");
     $("#resultado").hidden = true;
     $("#faixa-full").hidden = true; $("#ganhar-full").hidden = true;
     $("#resultado-vazio").hidden = false;
