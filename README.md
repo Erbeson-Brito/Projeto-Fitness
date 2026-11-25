@@ -8,7 +8,7 @@ Site de saúde e fitness que calcula o IMC do usuário e mostra orientações ge
 
 - **Calculadora de IMC** com peso, altura e idade, com validação dos campos.
 - **Orientações por faixa**: o que fazer, alimentação, treinos e se é preciso ganhar ou perder peso.
-- **Boas práticas** com tópicos sobre alimentação, atividade física, hidratação e constância, além de frases motivacionais.
+- **Boas práticas** com seis temas (alimentação, atividade física, treinos em casa, treinos na academia, hidratação e descanso). Cada tema tem uma página própria, com ilustração e texto explicativo, além de frases motivacionais.
 - **Treinos** em casa ou na academia. Visitantes veem exercícios gerais. Usuários logados veem exercícios da faixa do último IMC salvo.
 - **Cadastro e login** para salvar o IMC no histórico.
 - **Histórico** dos cálculos salvos, com opção de apagar tudo.
@@ -41,6 +41,9 @@ site-fitness-html/
 ├── index.html        # Estrutura de todas as páginas (SPA com roteamento por hash)
 ├── css/
 │   └── style.css     # Estilos e layout responsivo
+├── assets/
+│   ├── logo.png      # Logo do HealthMeta
+│   └── topicos/      # Ilustrações dos temas de boas práticas (SVG)
 ├── js/
 │   ├── data.js       # Textos e dados das faixas, tópicos e frases
 │   └── app.js        # Lógica: IMC, login, histórico e treinos
